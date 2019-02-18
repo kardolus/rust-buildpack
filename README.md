@@ -4,9 +4,9 @@
 
 A Cloud Foundry [buildpack](http://docs.cloudfoundry.org/buildpacks/) for Rust based apps.
 
-### Buildpack User Documentation
+### Shimmed Buildpack
 
-Official buildpack documentation can be found at [go buildpack docs](http://docs.cloudfoundry.org/buildpacks/go/index.html).
+Note that this buildpack is a shim that lets you use the [Rust Cloud Native Buildpack](https://github.com/kardolus/rust-cnb) in Cloud Foundry.
 
 ### Building the Buildpack
 
@@ -40,6 +40,12 @@ To build this buildpack, run the following command from the buildpack's director
     cf push my_app [-b BUILDPACK_NAME]
     ```
 
+1. Use in PWS
+
+    ```bash
+    cf push my_app -b https://github.com/kardolus/rust-buildpack
+    ```
+
 ### Testing
 
 Buildpacks use the [Cutlass](https://github.com/cloudfoundry/libbuildpack/cutlass) framework for running integration tests.
@@ -53,19 +59,14 @@ To test this buildpack, run the following command from the buildpack's directory
    ```
    To simplify the process in the future, install [direnv](https://direnv.net/) which will automatically source .envrc when you change directories.
 
-1. Run unit tests
-
-    ```bash
-    ./scripts/unit.sh
-    ```
-
 1. Run integration tests
 
     ```bash
     ./scripts/integration.sh
     ```
 
-More information can be found on Github [cutlass](https://github.com/cloudfoundry/libbuildpack/cutlass).
+More information can be found on Github [cutlass](https://github.com/cloudfoundry/libbuildpack/cutlass). Note that this buildpack is nothing but a shim. 
+Additional testing is done on the [Cloud Native Buildpack](https://github.com/kardolus/rust-cnb) itself.
 
 ### Contributing
 
