@@ -1,5 +1,5 @@
 [[groups]]
-labels = ["rust"]
+labels = ["nodejs"]
 buildpacks = [
   { id = "us.kardol.buildpacks.rust", version = "latest" }
 ]

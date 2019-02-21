@@ -129,7 +129,7 @@ func AssertUsesProxyDuringStagingIfPresent(fixtureName string) {
 
 			traffic, _, _, err := cutlass.InternetTraffic(
 				bpDir,
-				filepath.Join("testdata", fixtureName),
+				filepath.Join("fixtures", fixtureName),
 				bpFile,
 				[]string{"HTTP_PROXY=" + proxy.URL, "HTTPS_PROXY=" + proxy.URL},
 			)
@@ -160,7 +160,7 @@ func AssertNoInternetTraffic(fixtureName string) {
 
 		traffic, _, _, err := cutlass.InternetTraffic(
 			bpDir,
-			filepath.Join("testdata", fixtureName),
+			filepath.Join("fixtures", fixtureName),
 			bpFile,
 			[]string{},
 		)

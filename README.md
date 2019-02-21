@@ -1,16 +1,16 @@
-# Cloud Foundry Rust Buildpack
+# Cloud Foundry Node.js Buildpack
 
 [![CF Slack](https://www.google.com/s2/favicons?domain=www.slack.com) Join us on Slack](https://cloudfoundry.slack.com/messages/buildpacks/)
 
-A Cloud Foundry [buildpack](http://docs.cloudfoundry.org/buildpacks/) for Rust based apps.
+A Cloud Foundry [buildpack](http://docs.cloudfoundry.org/buildpacks/) for Node based apps.
 
-### Shimmed Buildpack
+### Buildpack User Documentation
 
-Note that this buildpack is a shim that lets you use the [Rust Cloud Native Buildpack](https://github.com/kardolus/rust-cnb) in Cloud Foundry.
+Official buildpack documentation can be found at [node buildpack docs](http://docs.cloudfoundry.org/buildpacks/node/index.html).
 
 ### Building the Buildpack
 
-To build this buildpack, run the following command from the buildpack's directory:
+To build this buildpack, run the following commands from the buildpack's directory:
 
 1. Source the .envrc file in the buildpack directory.
 
@@ -22,7 +22,7 @@ To build this buildpack, run the following command from the buildpack's director
 1. Install buildpack-packager
 
     ```bash
-    (cd src/go/vendor/github.com/cloudfoundry/libbuildpack/packager/buildpack-packager && go install)
+    (cd src/nodejs/vendor/github.com/cloudfoundry/libbuildpack/packager/buildpack-packager && go install)
     ```
 
 1. Build the buildpack
@@ -40,15 +40,9 @@ To build this buildpack, run the following command from the buildpack's director
     cf push my_app [-b BUILDPACK_NAME]
     ```
 
-1. Use in PWS
-
-    ```bash
-    cf push my_app -b https://github.com/kardolus/rust-buildpack
-    ```
-
 ### Testing
 
-Buildpacks use the [Cutlass](https://github.com/cloudfoundry/libbuildpack/cutlass) framework for running integration tests.
+Buildpacks use the [Cutlass](https://github.com/cloudfoundry/libbuildpack/tree/master/cutlass) framework for running integration tests.
 
 To test this buildpack, run the following command from the buildpack's directory:
 
@@ -59,24 +53,42 @@ To test this buildpack, run the following command from the buildpack's directory
    ```
    To simplify the process in the future, install [direnv](https://direnv.net/) which will automatically source .envrc when you change directories.
 
+1. Run unit tests
+
+    ```bash
+    ./scripts/unit.sh
+    ```
+
 1. Run integration tests
 
+   Buildpacks use the [Cutlass](https://github.com/cloudfoundry/libbuildpack/tree/master/cutlass) framework for running integration tests against Cloud Foundry. Before running the integration tests, you need to login to your Cloud Foundry using the [cf cli](https://github.com/cloudfoundry/cli):
+   
+    ```bash
+    cf login -a https://api.your-cf.com -u name@example.com -p pa55woRD
+    ```
+    
+   Note that your user requires permissions to run `cf create-buildpack` and `cf update-buildpack`. To run the integration tests, run the following command from the buildpack's directory:
+    
     ```bash
     ./scripts/integration.sh
     ```
 
-More information can be found on Github [cutlass](https://github.com/cloudfoundry/libbuildpack/cutlass). Note that this buildpack is nothing but a shim. 
-Additional testing is done on the [Cloud Native Buildpack](https://github.com/kardolus/rust-cnb) itself.
-
 ### Contributing
 
-Find the guidelines [here](./CONTRIBUTING.md).
+Find our guidelines [here](./CONTRIBUTING.md).
 
 ### Help and Support
 
-Join the #buildpacks channel in our [Slack community](http://slack.cloudfoundry.org/) if you need any further assistance.
+Join the #buildpacks channel in our [Slack community](http://slack.cloudfoundry.org/).
 
 ### Reporting Issues
 
-Please fill out the issue template fully if you'd like to start an issue for the buildpack.
+Open an issue on this project.
 
+### Active Development
+
+The project backlog is on [Pivotal Tracker](https://www.pivotaltracker.com/projects/1042066).
+
+### Acknowledgements
+
+Inspired by the [Heroku buildpack](https://github.com/heroku/heroku-buildpack-nodejs).
