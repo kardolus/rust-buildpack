@@ -20,12 +20,12 @@ dependencies:
 - name: us.kardol.buildpacks.rust
   version: 0.0.1
   uri: https://github.com/kardolus/rust-cnb/releases/download/v0.0.1/rust-cnb-0.0.1.tgz
-  sha256: 2895b50febf991cc066449d569c029ceddcf926d3fd0419c0763317eb63ccd66
+  sha256: d7d8468655eaacccc3b74d67e9c1bc167880be2819058bdd47687cd2accccf6c
   cf_stacks:
   - cflinuxfs2
   - cflinuxfs3
   source: https://github.com/kardolus/rust-cnb/releases/download/v0.0.1/rust-cnb-0.0.1.tgz
-  source_sha256: 2895b50febf991cc066449d569c029ceddcf926d3fd0419c0763317eb63ccd66
+  source_sha256: d7d8468655eaacccc3b74d67e9c1bc167880be2819058bdd47687cd2accccf6c
 - name: v3-builder
   version: 0.0.2
   uri: https://buildpacks.cloudfoundry.org/dependencies/v3-builder/v3-builder-00b2a143-56e4f99a.tgz
